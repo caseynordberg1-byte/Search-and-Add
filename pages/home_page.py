@@ -33,4 +33,12 @@ class HomePage(BasePage):
         """Click the first product in search results."""
         self.click(self.FIRST_PRODUCT)
 
-    
+        # ── Verifications ───────────────────────────────────────
+
+    def is_search_results_displayed(self) -> bool:
+        """Check if search results appear."""
+        return self.is_visible(self.SEARCH_RESULTS_HEADER, timeout=10)
+
+    def get_search_results_text(self) -> str:
+        """Get the search results header text."""
+        return self.get_text(self.SEARCH_RESULTS_HEADER)
